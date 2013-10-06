@@ -2,7 +2,7 @@
 <html ng-app>
 <head>
     <script src="http://code.angularjs.org/1.2.0-rc.2/angular.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/controllers/login.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
@@ -34,7 +34,7 @@
 
 
             <div class="well">
-                <form role="form">
+                <form role="form" ng-submit="login()">
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input ng-model="email" type="email" class="form-control" id="email" placeholder="Enter email">
@@ -48,7 +48,7 @@
                             <input type="checkbox"> Remember Me
                         </label>
                     </div>
-                    <button class="btn btn-primary" ng-click="login(email, password)">Login</button>
+                    <input class="btn btn-primary" value="Login" type="submit">
                     <a href="#">Forgot your password?</a>
                 </form>
             </div>

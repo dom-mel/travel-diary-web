@@ -1,4 +1,6 @@
+'use strict';
 
+var api = '/travel-diary-api/web/app_dev.php/api/1.0';
 
 function LoginCtrl($scope, $http, $window) {
     $scope.loginError = false;
@@ -8,7 +10,7 @@ function LoginCtrl($scope, $http, $window) {
             return;
         }
 
-        $http.post('/TravelDiary/web/app_dev.php/api/1.0/user/login', {'user': $scope.email, 'password': $scope.password})
+        $http.post(api + '/user/login', {'user': $scope.email, 'password': $scope.password})
             .success(function(data) {
                 if (!data.success) {
                     $scope.loginError = true;

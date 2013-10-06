@@ -1,0 +1,1 @@
+var api = '/travel-diary-api/web/app_dev.php/api/1.0';
