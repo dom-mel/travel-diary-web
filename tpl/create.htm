@@ -1,0 +1,20 @@
+<div class="container" ng-controller="CreateCtrl">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="page-header">
+                <h1>Create a new diary</h1>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-12 col-lg-6 col-lg-offset-3">
+            <form role="form" ng-submit="create()">
+                <div class="form-group">
+                    <label for="create-title">Title</label>
+                    <input type="text" id="create-title" class="form-control" placeholder="Iceland holiday"
+                           ng-model="title">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

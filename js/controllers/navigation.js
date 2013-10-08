@@ -11,7 +11,7 @@ function NavigationCtrl($scope, $location, userService, apiService, $window) {
     });
 
     $scope.logout = function() {
-        apiService.logout().then(function(response) {
+        apiService.user.logout().then(function(response) {
             $window.location.replace('login.htm');
         });
     };
