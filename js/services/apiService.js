@@ -2,6 +2,8 @@
 
 var apiService = function($http) {
 
+    var getSession = 'session=' + encodeURIComponent(sessionStorage.sessionId);
+
     var service = {
         user: {
             logout: function() {
@@ -17,7 +19,10 @@ var apiService = function($http) {
                 });
             },
             all: function() {
-                return $http.get(api + '/diaries?session=' + encodeURIComponent(sessionStorage.sessionId))
+                return $http.get(api + '/diaries?' + getSession)
+            },
+            get: function(id) {
+                return $http.get(api + '/diary/' + encodeURIComponent(id) + '?' + getSession)
             }
         }
     };

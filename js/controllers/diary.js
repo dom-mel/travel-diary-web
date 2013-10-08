@@ -2,8 +2,9 @@
 
 function DiaryCtrl($scope, apiService, $routeParams) {
 
-    $scope.id = $routeParams.id
-
+    apiService.diary.get($routeParams.id).then(function(result) {
+        $scope.diary = result.data.diary;
+    });
 
 
 

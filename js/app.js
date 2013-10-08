@@ -1,5 +1,5 @@
 
-var travelDiary = angular.module('travelDiary',[]);
+var travelDiary = angular.module('travelDiary',['ngSanitize']);
 
 travelDiary.config(['$routeProvider', function($routeProvider) {
     $routeProvider
