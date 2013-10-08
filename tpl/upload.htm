@@ -1,7 +1,36 @@
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h1>Upload</h1>
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>Upload</h1>
+            </div>
         </div>
+        <div class="col-md-8 col-md-offset-2">
+            <form role="form">
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Overwrite data in image.
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Latitude</label>
+                    <input type="text" class="form-control" ng-model="lat">
+                </div>
+
+                <div class="form-group">
+                    <label>Longitude</label>
+                    <input type="text" class="form-control" ng-model="lng">
+                </div>
+
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" class="form-control" ng-model="date">
+                </div>
+            </form>
+        </div>
+
+
     </div>
 </div>
