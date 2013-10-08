@@ -9,8 +9,12 @@ var apiService = function($http) {
             }
         },
         diary: {
-            create: function(title) {
-                return $http.post(api + '/diary/create', {session: sessionStorage.sessionId, title: title})
+            create: function(title, text) {
+                return $http.post(api + '/diary/create', {
+                    session: sessionStorage.sessionId,
+                    title: title,
+                    text: text
+                });
             },
             all: function() {
                 return $http.get(api + '/diaries?session=' + encodeURIComponent(sessionStorage.sessionId))
