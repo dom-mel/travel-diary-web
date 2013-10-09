@@ -2,25 +2,14 @@
 
 function UploadCtrl() {
 
-    /*
-     if (typeof sessionStorage.sessionId == "undefined") {
-     //$window.location.replace('login.htm');
-     alert('no session');
-     }
-
-     $http({
-     'url': api+'/user/current',
-     'method': 'GET',
-     'params': {'session': sessionStorage.sessionId}
-     })
-     .success(function(data){
-     if (!data.success) {
-     //$window.location.replace('login.htm');
-     }
-     // Welcome
-     });
-
-     */
-
+    var map = new OpenLayers.Map( 'map');
+    var layer = new OpenLayers.Layer.OSM( "Simple OSM Map");
+    map.addLayer(layer);
+    map.setCenter(
+        new OpenLayers.LonLat(-71.147, 42.472).transform(
+            new OpenLayers.Projection("EPSG:4326"),
+            map.getProjectionObject()
+        ), 12
+    );
 
 }
