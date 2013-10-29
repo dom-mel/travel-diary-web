@@ -1,6 +1,6 @@
 'use strict';
 
-function UploadCtrl($scope) {
+function UploadCtrl($scope, $routeParams, apiService) {
 
     var mapOptions = {
         center: new google.maps.LatLng(30, 0),
@@ -36,4 +36,36 @@ function UploadCtrl($scope) {
             marker.setMap(null);
         }
     };
+
+    $scope.uploadingFiles = [];
+
+    $scope.upload = function(file) {
+
+        var pos = 0;
+        $scope.$apply(function() {
+            pos = $scope.uploadingFiles.push({
+                name: file.name,
+                size: file.size,
+                progress: 0,
+                status: 'loading'
+            });
+        });
+
+        var loadEvent = function(e) {
+            $scope.$apply(function() { $scope.uploadingFiles[pos-1].progress = 100; });
+            if (e.target.status !== 200) {
+                $scope.$apply(function() { $scope.uploadingFiles[pos-1].status = 'error'; });
+            } else {
+                $scope.$apply(function() { $scope.uploadingFiles[pos-1].status = 'done'; });
+            }
+        };
+
+        var progressEvent = function(e) {
+            if (e.lengthComputable) {
+                $scope.uploadingFiles[pos].progress = Math.round((e.loaded / e.total) * 100);
+            }
+        };
+
+        apiService.diary.photo.add(file, $routeParams.id, loadEvent, progressEvent);
+    }
 }

@@ -44,7 +44,7 @@
             <div class="panel panel-default upload-area">
                 <div class="panel-heading panel-title">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" loc-drag-and-drop allowed-types="image/jpg, image/jpeg" file-drop-action="upload(file)">
                             <h3 class=" text-center">
                                 Drop files here!
                             </h3>
@@ -63,13 +63,14 @@
                         <th>Size</th>
                         <th colspan="2">Progress</th>
                     </tr>
-                    <tr>
-                        <td>IMG312.JPG</td>
-                        <td>5.43 MB</td>
+                    <tr ng-repeat="upload in uploadingFiles">
+                        <td>{{ upload.name }}</td>
+                        <td>{{ upload.size }}</td>
                         <td>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 50%">
-                                    <span class="sr-only">50% completed</span>
+                                <div class="progress-bar" ng-class="{'progress-bar-danger': upload.status=='error', 'progress-bar-success': upload.status=='done'}"
+                                     role="progressbar" style="width: {{ upload.progress }}%">
+                                    <span class="sr-only">{{ upload.progress }}% completed</span>
                                 </div>
                             </div>
                         </td>

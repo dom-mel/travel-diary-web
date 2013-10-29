@@ -23,6 +23,22 @@ var apiService = function($http) {
             },
             get: function(id) {
                 return $http.get(api + '/diary/' + encodeURIComponent(id) + '?' + getSession)
+            },
+            photo: {
+                add: function(file, diaryId, loadEvent, progressEvent) {
+                    var formData = new FormData();
+                    formData.append('photo', file);
+                    formData.append('session', sessionStorage.sessionId);
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', api+"/diary/" + Math.round(diaryId) + "/photo", true);
+                    xhr.setRequestHeader("Accept","application/json");
+
+                    xhr.onload = loadEvent;
+                    xhr.onprogress = progressEvent;
+
+                    xhr.send(formData);
+                }
             }
         }
     };

@@ -12,3 +12,4 @@ travelDiary.config(['$routeProvider', function($routeProvider) {
 
 travelDiary.factory('userService', userService);
 travelDiary.factory('apiService', apiService);
+travelDiary.directive('locDragAndDrop', DNDDirective);
